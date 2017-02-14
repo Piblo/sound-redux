@@ -22,15 +22,15 @@ class SongsContainer extends Component {
 
 SongsContainer.propTypes = propTypes;
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   const { authed, entities, environment, navigator, player, playlists } = state;
   const { height, isMobile } = environment;
   const { songs, users } = entities;
-  const { query } = navigator.route;
+  const query = ownProps.location.query;
   const playingSongId = getPlayingSongId(player, playlists);
 
-  const time = query && query.t ? query.t : null;
-  let playlist = query && query.q ? query.q : 'house';
+  const time = query && query.time ? query.time : null;
+  let playlist = query && query.genre ? query.genre : 'house';
   if (time) {
     playlist = `${playlist} - ${time}`;
   }

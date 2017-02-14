@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Link from '../components/Link';
+import { Link } from 'react-router';
 import SongHeartCount from '../components/SongHeartCount';
 import Waveform from '../components/Waveform';
 
@@ -53,7 +53,7 @@ class SongListItem extends Component {
             <Link
               className="song-list-item-title"
               dispatch={dispatch}
-              route={{ path: ['songs', song.id] }}
+              to={`/songs/${song.id}`}
             >
               {song.title}
             </Link>
@@ -66,7 +66,7 @@ class SongListItem extends Component {
                 <Link
                   className="song-list-item-username"
                   dispatch={dispatch}
-                  route={{ path: ['users', song.user_id] }}
+                  to={`users/${song.user_id}`}
                 >
                   {user.username}
                 </Link>

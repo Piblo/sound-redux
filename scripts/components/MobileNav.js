@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Motion, presets, spring } from 'react-motion';
 import { GENRES } from '../constants/SongConstants';
-import Link from '../components/Link';
+import { Link } from 'react-router';
 import { getImageUrl } from '../utils/SongUtils';
 import { loginUser, logoutUser } from '../actions/AuthedActions';
 
@@ -178,7 +178,7 @@ class MobileNav extends Component {
           className="mobile-nav-tab"
           dispatch={this.props.dispatch}
           key={genre}
-          route={{ path: ['songs'], query: { q: genre } }}
+          to={{ pathname: 'songs', query: { genre } }}
         >
           {genre}
         </Link>
@@ -192,7 +192,7 @@ class MobileNav extends Component {
           className="mobile-nav-tab"
           dispatch={this.props.dispatch}
           key={tab}
-          route={{ path: ['me', tab] }}
+          to={`/me/${tab}`}
         >
           {tab}
         </Link>

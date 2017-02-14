@@ -3,7 +3,7 @@ import { playSong } from '../actions/PlayerActions';
 import { fetchSongIfNeeded } from '../actions/SongsActions';
 
 import Comments from '../components/Comments';
-import Link from '../components/Link';
+import { Link } from 'react-router';
 import SongListItem from '../components/SongListItem';
 import SongHeartCount from '../components/SongHeartCount';
 import Spinner from '../components/Spinner';
@@ -158,8 +158,7 @@ class Song extends Component {
                         />
                         <Link
                           className="song-username"
-                          dispatch={dispatch}
-                          route={{ path: ['users', user.id] }}
+                          to={`/users/${user.id}`}
                         >
                           {user.username}
                         </Link>

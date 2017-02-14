@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Link from '../components/Link';
+import { Link } from 'react-router';
 import SongHeart from '../components/SongHeart';
 import { IMAGE_SIZES } from '../constants/SongConstants';
 import TogglePlayButtonContainer from '../containers/TogglePlayButtonContainer';
@@ -41,7 +41,7 @@ class SongCard extends Component {
             <Link
               className="song-card-title"
               dispatch={dispatch}
-              route={{ path: ['songs', song.id] }}
+              to={`/songs/${song.id}`}
               title={song.title}
             >
               {formatSongTitle(song.title)}
@@ -49,7 +49,7 @@ class SongCard extends Component {
             <Link
               className="song-card-user-username"
               dispatch={dispatch}
-              route={{ path: ['users', user.id] }}
+              to={`/users/${user.id}`}
               title={user.username}
             >
               {user.username}

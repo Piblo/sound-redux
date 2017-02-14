@@ -9,12 +9,10 @@ class SongContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { authed, entities, environment, navigator, player, playlists } = state;
+function mapStateToProps(state, ownProps) {
+  const { authed, entities, environment, player, playlists } = state;
   const { songs, users } = entities;
   const { height } = environment;
-  const { path } = navigator.route;
-  const songId = Number(path[1]);
 
   const playingSongId = getPlayingSongId(player, playlists);
 
@@ -24,7 +22,7 @@ function mapStateToProps(state) {
     player,
     playingSongId,
     playlists,
-    songId,
+    songId: ownProps.params.id,
     songs,
     users,
   };

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { loginUser, logoutUser } from '../actions/AuthedActions';
-import Link from '../components/Link';
+import { Link } from 'react-router';
 import NavSearch from '../components/NavSearch';
 import Popover from '../components/Popover';
 import { getImageUrl } from '../utils/SongUtils';
@@ -115,7 +115,7 @@ class Nav extends Component {
         <Link
           className={`nav-nav-user-link ${(route.path[1] === 'likes' ? 'active' : '')}`}
           dispatch={dispatch}
-          route={{ path: ['me', 'likes'] }}
+          to="me/likes"
         >
           <span className="nav-nav-user-link-text">likes</span>
         </Link>
@@ -136,7 +136,7 @@ class Nav extends Component {
         <Link
           className={`nav-nav-user-link ${(route.path[1] === 'stream' ? 'active' : '')}`}
           dispatch={dispatch}
-          route={{ path: ['me', 'stream'] }}
+          to="me/stream"
         >
           {hasNewStreamSongs ? <div className="nav-nav-user-link-indicator" /> : null}
           <span className="nav-nav-user-link-text">stream</span>
@@ -155,7 +155,7 @@ class Nav extends Component {
           className="nav-playlist"
           dispatch={dispatch}
           key={playlistId}
-          route={{ path: ['me', 'playlists', playlistId] }}
+          to={`me/playlists/${playlistId}`}
         >
           <div className="nav-playlist-title">
             {`${playlist.title} (${playlist.track_count})`}
@@ -205,7 +205,7 @@ class Nav extends Component {
               <Link
                 className="nav-nav-item-link active"
                 dispatch={dispatch}
-                route={{ path: ['songs'] }}
+                to="/"
               >
                 SoundRedux
               </Link>

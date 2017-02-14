@@ -9,12 +9,11 @@ class UserContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { authed, entities, environment, navigator, player, playlists } = state;
+function mapStateToProps(state, ownProps) {
+  const { authed, entities, environment, player, playlists } = state;
   const { height } = environment;
   const { songs, users } = entities;
-  const { path } = navigator.route;
-  const userId = Number(path[1]);
+  const userId = ownProps.params.userId;
   const playingSongId = getPlayingSongId(player, playlists);
 
   return {

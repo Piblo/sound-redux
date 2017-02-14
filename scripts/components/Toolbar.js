@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Link from '../components/Link';
+import { Link } from 'react-router';
 import { GENRES } from '../constants/SongConstants';
 
 const DAYS = [7, 30, 90];
@@ -16,10 +16,10 @@ class Toolbar extends Component {
 
     return GENRES.map(g => {
       const route = {
-        path: ['songs'],
+        pathName: 'songs',
         query: {
-          q: g,
-          t: time,
+          genre: g,
+          time,
         },
       };
 
@@ -28,7 +28,7 @@ class Toolbar extends Component {
           className={`toolbar-item toolbar-genre ${(g === genre ? 'active' : '')}`}
           dispatch={dispatch}
           key={g}
-          route={route}
+          to={route}
         >
           {g}
         </Link>
@@ -42,10 +42,10 @@ class Toolbar extends Component {
 
     return DAYS.map(t => {
       const route = {
-        path: ['songs'],
+        pathName: 'songs',
         query: {
-          q: genre,
-          t: (t === time ? null : t),
+          genre,
+          time: (t === time ? null : t),
         },
       };
 
@@ -54,7 +54,7 @@ class Toolbar extends Component {
           className={`toolbar-time ${(t === time ? 'active' : '')}`}
           dispatch={dispatch}
           key={t}
-          route={route}
+          to={route}
         >
           {`${t} days`}
         </Link>

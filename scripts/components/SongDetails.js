@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import Link from '../components/Link';
+import { Link } from 'react-router';
 import { formatSongTitle } from '../utils/FormatUtils';
 
 const propTypes = {
-  dispatch: PropTypes.func.isRequired,
   songId: PropTypes.number,
   title: PropTypes.string.isRequired,
   userId: PropTypes.number,
@@ -12,21 +11,19 @@ const propTypes = {
 
 class SongDetails extends Component {
   render() {
-    const { dispatch, songId, title, userId, username } = this.props;
+    const { songId, title, userId, username } = this.props;
     return (
       <div className="song-card-details">
         <Link
           className="song-card-title"
-          dispatch={dispatch}
-          route={{ path: ['songs', songId] }}
+          to={`/songs${songId}`}
           title={title}
         >
           {formatSongTitle(title)}
         </Link>
         <Link
           className="song-card-user-username"
-          dispatch={dispatch}
-          route={{ path: ['users', userId] }}
+          to={`/users${userId}`}
           title={username}
         >
           {username}

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Link from '../components/Link';
+import { Link } from 'react-router';
 import { addCommas } from '../utils/FormatUtils';
 import { getImageUrl } from '../utils/SongUtils';
 import { getUserLocation } from '../utils/UserUtils';
@@ -24,7 +24,7 @@ class UserCard extends Component {
           <Link
             className="user-card-title"
             dispatch={dispatch}
-            route={{ path: ['users', user.id] }}
+            to={`users/${user.id}`}
           >
             {user.username}
           </Link>

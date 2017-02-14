@@ -19,6 +19,7 @@ const propTypes = {
   isMobile: PropTypes.bool,
   path: PropTypes.array.isRequired,
   width: PropTypes.number,
+  children: PropTypes.node,
 };
 
 class App extends Component {
@@ -56,7 +57,7 @@ class App extends Component {
       return (
         <div className="mobile" style={{ height: `${height}px`, width: `${width}px` }}>
           <PlayerContainer />
-          {this.renderContent()}
+          {this.props.children}
           <NavContainer />
         </div>
       );
@@ -65,7 +66,7 @@ class App extends Component {
     return (
       <div>
         <NavContainer />
-        {this.renderContent()}
+        {this.props.children}
         <PlayerContainer />
         <ModalContainer />
       </div>
